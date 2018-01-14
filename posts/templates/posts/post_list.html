@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load embed_video_tags %}
+
+{% block content %}
+
+
+
+<h1>BJJ Journal Posts</h1>
+<table class="table">
+  {% for post in object_list %}
+  <tr>
+    {% video post.video as video %}
+    <td><font size="4"><pre>{{ post.pub_date_pretty }}</pre> </font> </td>
+    <td class="detail"><font size="4">{{ post.description }} </font></td>
+    <td><a href="{{ post.get_absolute_url }}"><img src="{{ video.thumbnail }}" width=240 height=180 class="img-rounded"></a></td>
+    {% endvideo %}
+  </tr>
+
+  {% endfor %}
+</table>
+
+<ul class="pager">
+  {% if page_obj.has_previous %}
+  <li class="previous"><a href="?page={{ page_obj.previous_page_number }}">&larr; Older</a></li>
+  {% endif %}
+  {% if page_obj.has_next %}
+  <li class="next"><a href="?page={{ page_obj.next_page_number }}">Newer &rarr;</a></li>
+  {% endif %}
+</ul>
+{% endblock %}

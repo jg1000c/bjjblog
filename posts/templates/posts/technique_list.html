@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load embed_video_tags %}
+
+{% block content %}
+<h2> {{ object_list.0.technique_type }}</h2>
+<table class="table">
+  {% for technique in post_list %}
+  <tr>
+    {% video technique.video as video %}
+    <td class = detail> <pre>{{ technique.title }}</pre>
+      {{ technique.description }} </td>
+    <td><a href="{{ lucas.get_absolute_url }}"><img src="{{ video.thumbnail }}" width=240 height=190 class="img-rounded"></a></td>
+    {% endvideo %}
+  </tr>
+
+  {% endfor %}
+</table>
+
+<ul class="pager">
+  {% if page_obj.has_previous %}
+  <li class="previous"><a href="?page={{ page_obj.previous_page_number }}">&larr; Older</a></li>
+  {% endif %}
+  {% if page_obj.has_next %}
+  <li class="next"><a href="?page={{ page_obj.next_page_number }}">Newer &rarr;</a></li>
+  {% endif %}
+</ul>
+{% endblock %}
