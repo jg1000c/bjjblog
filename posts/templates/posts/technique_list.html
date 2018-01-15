@@ -10,7 +10,7 @@
     {% video technique.video as video %}
     <td class = detail> <pre>{{ technique.title }}</pre>
       {{ technique.description }} </td>
-    <td><a href="{{ lucas.get_absolute_url }}"><img src="{{ video.thumbnail }}" width=240 height=190 class="img-rounded"></a></td>
+    <td><a href="{{ technique.get_absolute_url }}"><img src="{{ video.thumbnail }}" width=240 height=190 class="img-rounded"></a></td>
     {% endvideo %}
   </tr>
 
