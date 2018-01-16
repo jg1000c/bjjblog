@@ -7,7 +7,7 @@ class PostListView(ListView):
     model = Post
     paginate_by = 10
     def get_queryset(self):
-        queryset = Post.objects.filter(author__startswith='Jason')
+        queryset = Post.objects.order_by('-pub_date').filter(author__startswith='Jason')
         return queryset
 
 class PostDetailView(DetailView):
@@ -19,9 +19,9 @@ class PassingListView(ListView):
     paginate_by = 10
     template_name = 'posts/technique_list.html'
     def get_queryset(self):
-        queryset = Post.objects.filter(technique_type__startswith='Guard Passing')
+        queryset = Post.objects.order_by('-pub_date').filter(technique_type__startswith='Guard Passing')
         return queryset
 
 
-class LucasDetailView(DetailView):
-    model = Post
+
+
