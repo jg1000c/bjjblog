@@ -38,6 +38,11 @@
       font-size: 64px;
       margin: 20px 5px;
     }
+
+    .admin {
+    margin-top: 10px;
+
+}
     </style>
 
 </head>
@@ -52,7 +57,9 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{% url 'posts:list' %}">Goyer's Blog</a>
+
         </div>
+        <button type="button" class="btn pull-right admin"> <a href="{% url 'admin:index' %}">Admin</a></button>
         <div class="btn-group">
 
             <div class="btn-group">
