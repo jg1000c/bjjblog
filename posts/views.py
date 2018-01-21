@@ -19,9 +19,21 @@ class PassingListView(ListView):
     paginate_by = 10
     template_name = 'posts/technique_list.html'
     def get_queryset(self):
-        queryset = Post.objects.order_by('-pub_date').filter(technique_type__startswith='Guard Passing')
+        queryset = Post.objects.order_by('-pub_date').filter(technique_type__contains='Pass')
         return queryset
 
+class OpenGuardListView(ListView):
+    model = Post
+    paginate_by = 10
+    template_name = 'posts/technique_list.html'
+    def get_queryset(self):
+        queryset = Post.objects.order_by('-pub_date').filter(technique_type__contains='Open')
+        return queryset
 
-
-
+class HalfGuardListView(ListView):
+    model = Post
+    paginate_by = 10
+    template_name = 'posts/technique_list.html'
+    def get_queryset(self):
+        queryset = Post.objects.order_by('-pub_date').filter(technique_type__contains='Half')
+        return queryset
